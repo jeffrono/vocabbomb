@@ -19,6 +19,9 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 	$definition = $row["definition"];
 }
 ?>
+<?php echo "result is: $result"; ?>
+
+<?php echo "word is: $word"; ?>
 
 <tr height="125">
 	<td align="center">
