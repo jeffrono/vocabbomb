@@ -11,7 +11,9 @@ $query="select *
 from word join challenge on challenge.word_id = word.id
 where challenge.created_at = curdate();";
 $result=mysqli_query($link, $query);
+echo $result;
 while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+	echo "ok";
 	$word = $row["word"];
 	$pos = $row["partofspeech"];
 	$definition = $row["definition"];
