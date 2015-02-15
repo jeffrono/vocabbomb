@@ -21,7 +21,7 @@ limit 25;";
 from tweet join rating on tweet.id = rating.tweet_id
 where tweet.rating > 0 and tweet.num_ratings > 0
 order by ((tweet.rating)*(tweet.num_ratings)) desc
-limit 25;"
+limit 25;";
 		$result = mysqli_query($link, $query);
 		if($lst = mysqli_fetch_assoc($result))
 		{
