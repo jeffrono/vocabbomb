@@ -23,12 +23,12 @@ where tweet.rating > 0 and tweet.num_ratings > 0
 order by ((tweet.rating)*(tweet.num_ratings)) desc
 limit 25;";
 		$result = mysqli_query($link, $query);
-		if($lst = mysqli_fetch_assoc($result))
+		if($lst = mysql_fetch_assoc($result))
 		{
-			mysqli_free_result($result);
+			mysql_free_result($result);
 			return $lst;
 		}
-		mysqli_free_result($result);
+		mysql_free_result($result);
 		return false;
 	}
 	

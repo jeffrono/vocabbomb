@@ -17,8 +17,15 @@ and date(challenge.created_at) = curdate()
 order by ((tweet.rating)*(tweet.num_ratings)*(tweet.retweets + 1)) desc
 limit 10;";
 
-$result=mysql_query($query);
+$query="select tweet.display_tweet, tweet.handle_id, tweet.rating, tweet.num_ratings, tweet.retweets, tweet.hashtag
+from tweet join challenge on tweet.challenge_id = challenge.id
+where tweet.rating > 0 and tweet.num_ratings > 0
+order by ((tweet.rating)*(tweet.num_ratings)*(tweet.retweets + 1)) desc
+limit 10;";
+
+$result=mysqli_query($link,$query);
 $i=0;
+echo $result;
 while($row = mysql_fetch_array($result)) {
 	$display_tweet = $row["display_tweet"];
 	$total_rating = $row["rating"];

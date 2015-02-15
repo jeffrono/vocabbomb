@@ -57,7 +57,7 @@ require_once('boxTopTweetsWeek.php');
 
 
 <?php
-	mysql_close();
+	//mysql_close();
 	require('googleAnalytics.txt');
 ?>
 </body>
