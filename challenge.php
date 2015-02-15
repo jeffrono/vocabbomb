@@ -1,6 +1,6 @@
 <?php
 require_once "dbFunctions.php";
-vb_connect();
+$link = vb_connect();
 
 //$ip=@$REMOTE_ADDR;
 $ip=$_SERVER['REMOTE_ADDR']; //global something, may need to switch back
@@ -61,7 +61,6 @@ $ip=$_SERVER['REMOTE_ADDR']; //global something, may need to switch back
 </table>
 
 <?php
-	mysql_close();
 	require('googleAnalytics.txt');
 ?>
 

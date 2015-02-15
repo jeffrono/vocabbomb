@@ -8,7 +8,7 @@
 
 <?php
 
-while($row = mysql_fetch_array($result)) {
+while($row = mysqli_fetch_array($result)) {
 	$display_tweet = $row["display_tweet"];
 	$total_rating = $row["rating"];
 	$num_ratings = $row["num_ratings"];

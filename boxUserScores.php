@@ -18,7 +18,7 @@ if (isset($_POST["handle"])) {
 
 // print out the user's scoreboard!
 $query="select * from user where handle = '$handle';";
-$result=mysql_query($query);
+$result=mysqli_query($link, $query);
 
 require('tableScoreboard.php');
 
@@ -34,7 +34,7 @@ where user.handle = '$handle'
 order by tweet.id desc
 limit 5;";
 
-$result=mysql_query($query);
+$result=mysqli_query($link, $query);
 
 require('tableUserTweets.php');
 

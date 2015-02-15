@@ -7,8 +7,8 @@ $query = "select count(id) as count
 from rating
 where date(rating.created_at) = curdate()
 and rating.ip = '$ip';";
-$result=mysql_query($query);
-while($row = mysql_fetch_array($result)) {
+$result=mysqli_query($link, $query);
+while($row = mysqli_fetch_array($result)) {
 	$yournumvotes = $row["count"];
 }
 if($yournumvotes %25 == 0 && $yournumvotes > 0) {
@@ -54,9 +54,9 @@ and rating.ip = '$ip'
 order by rating.created_at desc
 limit 20;";
 
-$result=mysql_query($query);
+$result=mysqli_query($link, $query);
 $i=0;
-while($row = mysql_fetch_array($result)) {
+while($row = mysqli_fetch_array($result)) {
 	$tweet = $row["display_tweet"];
 	$your_rating = $row["rating"];
 	$total_rating = $row["total_rating"];
@@ -72,9 +72,9 @@ while($row = mysql_fetch_array($result)) {
 	
 	# get this user's num tweets, and num vocab words
 	$query="select * from user where id = $handle_id";
-	$resultb=mysql_query($query);
+	$resultb=mysqli_query($link, $query);
 
-	while($rowb = mysql_fetch_array($resultb)) {
+	while($rowb = mysqli_fetch_array($resultb)) {
 		$handle = $rowb["handle"];
 		$profile_image_url = $rowb["profile_image_url"];
 
@@ -86,15 +86,15 @@ while($row = mysql_fetch_array($result)) {
 	
 	# get the number of unique tweets for this user
 	$query="select count(distinct id) as numtweets from tweet where tweet.handle_id = $handle_id";
-	$resultb=mysql_query($query);
-	while($rowb = mysql_fetch_array($resultb)) {
+	$resultb=mysqli_query($link, $query);
+	while($rowb = mysqli_fetch_array($resultb)) {
 		$numtweets = $rowb["numtweets"];
 	}
 
 	# get the number of unique vocab words used by this user
 	$query="select count(distinct challenge_id) as challenges from tweet where tweet.handle_id = $handle_id";
-	$resultb=mysql_query($query);
-	while($rowb = mysql_fetch_array($resultb)) {
+	$resultb=mysqli_query($link, $query);
+	while($rowb = mysqli_fetch_array($resultb)) {
 		$numchallenges = $rowb["challenges"];
 	}
 	

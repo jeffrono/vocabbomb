@@ -1,6 +1,6 @@
 <?php
 
-while($row = mysql_fetch_array($result)) {
+while($row = mysqli_fetch_array($result)) {
 	$handle= $row["handle"];
 	$profile_image_url = $row["profile_image_url"];
 	$active = date("F j, Y", strtotime($row["active"]));

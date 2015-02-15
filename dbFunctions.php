@@ -17,11 +17,6 @@ and YEARweek(tweet.published) = YEARweek(CURRENT_DATE - INTERVAL 7 DAY)
 order by ((tweet.rating)*(tweet.num_ratings)) desc
 limit 25;";
 
-	$query = "select distinct tweet.tweet, tweet.handle_id, tweet.rating, tweet.num_ratings
-from tweet join rating on tweet.id = rating.tweet_id
-where tweet.rating > 0 and tweet.num_ratings > 0
-order by ((tweet.rating)*(tweet.num_ratings)) desc
-limit 25;";
 		$result = mysqli_query($link, $query);
 		if($lst = mysql_fetch_assoc($result))
 		{
@@ -39,13 +34,13 @@ where tweet.rating > 0 and tweet.num_ratings > 0
 and YEARweek(tweet.published) = YEARweek(CURRENT_DATE - INTERVAL 7 DAY)
 order by ((tweet.rating)*(tweet.num_ratings)) desc
 limit 25;";
-		$result = mysql_query($query);
-		if($lst = mysql_fetch_assoc($result))
+		$result = mysqli_query($link, $query);
+		if($lst = mysqli_fetch_assoc($result))
 		{
-			mysql_free_result($result);
+			mysqli_free_result($result);
 			return $lst;
 		}
-		mysql_free_result($result);
+		mysqli_free_result($result);
 		return false;
 	}
 }

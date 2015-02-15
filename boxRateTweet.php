@@ -12,8 +12,8 @@ $query="select tweet.id, tweet.tweet, tweet.display_tweet, word.word, word.parto
 	from rating
 	where ip = '$ip')
 	order by tweet.hashtag desc, tweet.retweets desc, challenge.id desc limit 1;";
-$result=mysql_query($query);
-while($row = mysql_fetch_array($result)) {
+$result=mysqli_query($link, $query);
+while($row = mysqli_fetch_array($result)) {
 	$tweet_id = $row["id"];
 	$tweet = $row["tweet"];
 	$display_tweet = $row["display_tweet"];
@@ -31,8 +31,8 @@ $query="select count(distinct tweet.id) as count
 	(select tweet_id
 	from rating
 	where ip = '$ip')";
-$result=mysql_query($query);
-while($row = mysql_fetch_array($result)) {
+$result=mysqli_query($link, $query);
+while($row = mysqli_fetch_array($result)) {
 	$remainingvotes = $row["count"] - 1;
 }
 */

@@ -1,6 +1,6 @@
 <?php
 require_once('dbFunctions.php');
-vb_connect();
+$link = vb_connect();
 
 ?>
 
@@ -77,7 +77,6 @@ require_once('boxChallenge.php');
 </table>
 
 <?php
-	mysql_close();
 	require('googleAnalytics.txt');
 ?>
 </div>

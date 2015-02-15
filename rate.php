@@ -1,6 +1,6 @@
 <?php
 require_once('dbFunctions.php');
-vb_connect();
+$link = vb_connect();
 
 //$ip=@$REMOTE_ADDR;
 $ip=$_SERVER['REMOTE_ADDR']; //global something, may need to switch back
@@ -22,8 +22,8 @@ if (isset($_POST)) {
 	# did this ip already vote on this tweet?  if not, previousvote will stay 0
 	if (isset($_POST["tweet_id"])) {
 		$query="select 1 from rating where ip='$ip' and tweet_id = " . $_POST["tweet_id"];
-		$result=mysql_query($query);
-		$previousvote = mysql_num_rows($result);
+		$result=mysqli_query($link, $query);
+		$previousvote = mysqli_num_rows($result);
 	} # if there is a tweet id
 } # if post
 
@@ -31,11 +31,11 @@ if (isset($_POST)) {
 if(isset($vote) && $previousvote <1) {
 	// update tweet rating
 	$query="update tweet set rating = rating+$vote, num_ratings = num_ratings+1 where id = " . $_POST["tweet_id"];
-	$result=mysql_query($query);
+	$result=mysqli_query($link, $query);
 
 	// insert rating record for ip/tweet
 	$query="insert into rating (ip, tweet_id, rating) values ('$ip', " . $_POST["tweet_id"] . ", $vote)";
-	$result=mysql_query($query);
+	$result=mysqli_query($link, $query);
 } # if vote was registered
 
 ?>
@@ -109,7 +109,6 @@ require_once('previousRatedTweets.php');
 </table>
 
 <?php
-	mysql_close();
 	require('googleAnalytics.txt');
 ?>
 </div>
