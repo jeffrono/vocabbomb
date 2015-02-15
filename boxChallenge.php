@@ -11,7 +11,9 @@ $query="select *
 from word join challenge on challenge.word_id = word.id
 where challenge.created_at = curdate();";
 $result=mysqli_query($link, $query);
-echo $result;
+if(! $result) {
+    die("SQL Error: " . mysqli_error($link);
+}
 while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 	echo "ok";
 	$word = $row["word"];
@@ -19,9 +21,6 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 	$definition = $row["definition"];
 }
 ?>
-<?php echo "result is: $result"; ?>
-
-<?php echo "word is: $word"; ?>
 
 <tr height="125">
 	<td align="center">
