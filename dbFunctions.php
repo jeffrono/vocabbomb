@@ -13,7 +13,7 @@ function vb_connect() {
 
 	$query="select *
 	from word join challenge on challenge.word_id = word.id
-	where challenge.created_at = curdate();";
+	where challenge.created_at = '2015-02-15'";
 
 
 	//$result=mysqli_query($link, $query);

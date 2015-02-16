@@ -9,7 +9,8 @@
 //get challenge word
 $query="select *
 from word join challenge on challenge.word_id = word.id
-where challenge.created_at = curdate();";
+where challenge.created_at = '2015-02-15';";
+//where challenge.created_at = curdate();";
 
 
 //$result=mysqli_query($link, $query);
