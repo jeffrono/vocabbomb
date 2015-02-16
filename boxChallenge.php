@@ -13,6 +13,7 @@ where challenge.created_at = curdate();";
 $result=mysqli_query($link, $query);
 
 while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)) {
+	echo $row["word"];
 	$word = $row["word"];
 	$pos = $row["partofspeech"];
 	$definition = $row["definition"];
