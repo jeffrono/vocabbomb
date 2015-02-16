@@ -10,6 +10,23 @@ function vb_connect() {
 	$db = substr($url["path"], 1);
 
 	$conn = new mysqli($server, $username, $password, $db);
+
+	$query="select *
+	from word join challenge on challenge.word_id = word.id
+	where challenge.created_at = curdate();";
+
+
+	//$result=mysqli_query($link, $query);
+	$result = $conn->query($query);
+
+	//while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)) {
+	while($row = $result->fetch_assoc()) {
+		$word = $row["word"];
+		$pos = $row["partofspeech"];
+		$definition = $row["definition"];
+		echo $word;
+	}
+
 	return $conn;
 }
 
