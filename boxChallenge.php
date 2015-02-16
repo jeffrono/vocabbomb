@@ -25,17 +25,7 @@ while($row = $result->fetch_array(MYSQLI_ASSOC)) {
 <tr height="125">
 	<td align="center">
 		<div id="tbox"></div>
-		<script type="text/javascript">
-			twttr.anywhere(function (T) {
-				T("#tbox").tweetBox({
-					height: 100,
-					width: 400,
-					defaultContent: " #vocabbomb",
-					label: "Use the word <?php echo "'$word'"; ?> in a tweet:",
-					
-				});
-			});
-		</script>
+
 		
 	</td>
 </tr>
