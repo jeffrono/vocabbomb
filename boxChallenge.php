@@ -14,7 +14,8 @@ $result=mysqli_query($link, $query);
 if(! $result) {
     die("SQL Error: " . mysqli_error($link);
 }
-while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+
+while($row = $result->fetch_array(MYSQLI_ASSOC)) {
 	echo "ok";
 	$word = $row["word"];
 	$pos = $row["partofspeech"];
