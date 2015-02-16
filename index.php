@@ -1,6 +1,6 @@
 <?php
 require_once('dbFunctions.php');
-$link = vb_connect();
+global $link = vb_connect();
 
 ?>
 
