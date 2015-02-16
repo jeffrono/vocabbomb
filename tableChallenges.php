@@ -6,9 +6,9 @@ from challenge join (word, tweet) on challenge.word_id = word.id and tweet.chall
 group by challenge.id
 order by challenge.id desc
 limit 1,50;";
-$result=mysqli_query($link, $query);
+$result = $link->query($query);
 
-while($row = mysqli_fetch_array($result)) {
+while($row = = $result->fetch_assoc()) {
 	$challenge_date = date("F j, Y", strtotime($row["created_at"]));
 	$word= $row["word"];
 	$partofspeech = $row["partofspeech"];

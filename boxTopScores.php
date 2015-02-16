@@ -19,7 +19,7 @@
 $query="select * from user 
 where total_points >0 
 order by (total_tweets*(total_points)*(total_challenges)*(total_retweets+1)) desc limit 25;";
-$result=mysqli_query($link, $query);
+$result = $link->query($query);
 
 require('tableScoreboard.php');
 ?>	

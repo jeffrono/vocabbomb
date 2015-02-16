@@ -17,9 +17,9 @@ and date(challenge.created_at) = curdate()
 order by ((tweet.rating)*(tweet.num_ratings)*(tweet.retweets + 1)) desc
 limit 10;";
 
-$result=mysqli_query($link, $query);
+$result = $link->query($query);
 $i=0;
-while($row = mysqli_fetch_array($result)) {
+while($row = = $result->fetch_assoc()) {
 	$display_tweet = $row["display_tweet"];
 	$total_rating = $row["rating"];
 	$num_ratings = $row["num_ratings"];

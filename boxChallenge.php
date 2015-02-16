@@ -9,11 +9,10 @@
 //get challenge word
 $query="select *
 from word join challenge on challenge.word_id = word.id
-where challenge.created_at = '2015-02-15';";
-//where challenge.created_at = curdate();";
+where challenge.created_at = curdate();";
 
 
-//$result=mysqli_query($link, $query);
+//$result = $link->query($query);
 $result = $link->query($query);
 
 //while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)) {
@@ -24,13 +23,6 @@ while($row = $result->fetch_assoc()) {
 }
 ?>
 
-<tr height="125">
-	<td align="center">
-		<div id="tbox"></div>
-
-		
-	</td>
-</tr>
 <tr>
 	<td align="center">
 		<span class="small grayText">This challenge will self-destruct in <?php echo countdown::hours(); ?> hours, <?php echo countdown::minutes(); ?> minutes.</span>

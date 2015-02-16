@@ -7,8 +7,8 @@ $query = "select count(id) as count
 from rating
 where date(rating.created_at) = curdate()
 and rating.ip = '$ip';";
-$result=mysqli_query($link, $query);
-while($row = mysqli_fetch_array($result)) {
+$result = $link->query($query);
+while($row = = $result->fetch_assoc()) {
 	$yournumvotes = $row["count"];
 }
 if($yournumvotes %25 == 0 && $yournumvotes > 0) {
@@ -54,9 +54,9 @@ and rating.ip = '$ip'
 order by rating.created_at desc
 limit 20;";
 
-$result=mysqli_query($link, $query);
+$result = $link->query($query);
 $i=0;
-while($row = mysqli_fetch_array($result)) {
+while($row = = $result->fetch_assoc()) {
 	$tweet = $row["display_tweet"];
 	$your_rating = $row["rating"];
 	$total_rating = $row["total_rating"];

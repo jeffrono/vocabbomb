@@ -22,7 +22,7 @@ if (isset($_POST)) {
 	# did this ip already vote on this tweet?  if not, previousvote will stay 0
 	if (isset($_POST["tweet_id"])) {
 		$query="select 1 from rating where ip='$ip' and tweet_id = " . $_POST["tweet_id"];
-		$result=mysqli_query($link, $query);
+		$result = $link->query($query);
 		$previousvote = mysqli_num_rows($result);
 	} # if there is a tweet id
 } # if post
@@ -31,11 +31,11 @@ if (isset($_POST)) {
 if(isset($vote) && $previousvote <1) {
 	// update tweet rating
 	$query="update tweet set rating = rating+$vote, num_ratings = num_ratings+1 where id = " . $_POST["tweet_id"];
-	$result=mysqli_query($link, $query);
+	$result = $link->query($query);
 
 	// insert rating record for ip/tweet
 	$query="insert into rating (ip, tweet_id, rating) values ('$ip', " . $_POST["tweet_id"] . ", $vote)";
-	$result=mysqli_query($link, $query);
+	$result = $link->query($query);
 } # if vote was registered
 
 ?>
